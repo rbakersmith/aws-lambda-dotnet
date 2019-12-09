@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Amazon.Lambda.TestTool.WebTester
 {
@@ -62,6 +63,8 @@ namespace Amazon.Lambda.TestTool.WebTester
         {
             services.AddMvc()
                     .WithRazorPagesRoot("/WebTester/Pages");
+
+            services.AddTransient(typeof(ILogger<>), typeof(Logger<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
